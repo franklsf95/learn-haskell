@@ -1,4 +1,4 @@
 learn-haskell
 =============
 
-Haskell code snippets
+Haskell code snippets for **Real World Haskell** and **CMSC16100**.

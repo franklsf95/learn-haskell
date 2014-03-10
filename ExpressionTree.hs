@@ -1,4 +1,4 @@
-from Data.Char import digitToInt
+import Data.Char
 
 data Operator = Plus | Minus | Multiply | Divide
 data ETree = Leaf Double | Tree Operator ETree ETree
@@ -39,8 +39,9 @@ showInfix (Tree f a b) = showInfixHelper p a ++ show f ++ showInfixHelper p b
 
 showInfixHelper :: Int -> ETree -> String
 showInfixHelper _ (Leaf x) = show x
-showInfixHelper p t@(Tree f a b) | p > priority f =  "(" ++ showInfixHelper 0 t ++ ")"
-showInfixHelper _ t                               = showInfix t
+showInfixHelper p t@(Tree f a b)
+    | p > priority f =  "(" ++ showInfixHelper 0 t ++ ")"
+    | otherwise      = showInfix t
 
 -- 5*(3+2)-9/(4-1) = 25 - 3
 t0 = Tree Minus (Tree Multiply (Leaf 5) (Tree Plus  (Leaf 3) (Leaf 2)))
